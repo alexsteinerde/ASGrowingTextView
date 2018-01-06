@@ -1,10 +1,10 @@
 # GrowingTextView
-
-[![Version](https://img.shields.io/cocoapods/v/GrowingTextView.svg?style=flat)](http://cocoapods.org/pods/GrowingTextView)
-[![License](https://img.shields.io/cocoapods/l/GrowingTextView.svg?style=flat)](http://cocoapods.org/pods/GrowingTextView)
-[![Platform](https://img.shields.io/cocoapods/p/GrowingTextView.svg?style=flat)](http://cocoapods.org/pods/GrowingTextView)
-[![Language](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](http://cocoapods.org/pods/GrowingTextView)
-[![Language](https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat)](http://cocoapods.org/pods/GrowingTextView)
+This is a fork of https://github.com/KennethTsang/GrowingTextView.
+[![Version](https://img.shields.io/cocoapods/v/GrowingTextView.svg?style=flat)](http://cocoapods.org/pods/ASGrowingTextView)
+[![License](https://img.shields.io/cocoapods/l/GrowingTextView.svg?style=flat)](http://cocoapods.org/pods/ASGrowingTextView)
+[![Platform](https://img.shields.io/cocoapods/p/GrowingTextView.svg?style=flat)](http://cocoapods.org/pods/ASGrowingTextView)
+[![Language](https://img.shields.io/badge/Swift-3.0-orange.svg?style=flat)](http://cocoapods.org/pods/ASGrowingTextView)
+[![Language](https://img.shields.io/badge/Swift-4.0-orange.svg?style=flat)](http://cocoapods.org/pods/ASGrowingTextView)
 
 <img src="DEMO.gif" border=1 style="border-color:#eeeeee">
 
@@ -22,17 +22,7 @@ it, simply add the following line to your Podfile:
 Swift 4<br>
 
 ```ruby
-pod 'GrowingTextView', '~> 0.5.4'
-```
-
-Swift 3<br>
-```ruby
-pod 'GrowingTextView', '~> 0.4.0'
-```
-
-Swift 2.3 (Stopped update since Sep 2016)<br>
-```ruby
-pod 'GrowingTextView', :git => 'https://github.com/KennethTsang/GrowingTextView.git', :branch => 'swift2'
+pod 'GrowingTextView', '~> 0.6'
 ```
 
 #### Manually
@@ -82,6 +72,7 @@ override func viewDidLoad() {
 | *attributedPlaceHolder*        | NSAttributedString? | Attributed PlaceHolder text.             | *nil*                           |
 | *minHeight*                    | CGFloat             | Minimum height of textview.              | *0.0*                           |
 | *maxHeight*                    | CGFloat             | Maximum height of textview.              | *0.0*                           |
+| *parentScrollView*                    | UIScrollView?             | Parent scroll view that will be scrolled to the correct position when neccesary.              | *nil*                           |
 
 #### Examples
 
@@ -112,6 +103,22 @@ class ViewController: UIViewController, GrowingTextViewDelegate {
 }
 ```
 
+## TableView
+
+If the text view is a subview of a table view and the parent scroll view is this table view it is necessary to update the table view:
+
+```swift
+class ViewController: UIViewController, GrowingTextViewDelegate {
+    func textViewDidChangeHeight(_ textView: GrowingTextView, height: CGFloat) {
+        DispatchQueue.main.async {
+            UIView.setAnimationsEnabled(false)
+            tableView.beginUpdates()
+            tableView.endUpdates()
+            UIView.setAnimationsEnabled(true)
+        }
+    }
+}
+```
 
 
 ## Delegate
@@ -133,7 +140,9 @@ Check out UITextViewDelegate here: [https://developer.apple.com/reference/uikit/
 
 ## Author
 
-Kenneth Tsang, kenneth.tsang@me.com
+Origin Author: Kenneth Tsang, kenneth.tsang@me.com
+Editied small things: Alex Steiner, info@alexsteiner.de
+
 
 ## License
 

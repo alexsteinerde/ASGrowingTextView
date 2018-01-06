@@ -1,5 +1,5 @@
 PODS:
-  - GrowingTextView (0.1.7)
+  - GrowingTextView (0.5.4)
 
 DEPENDENCIES:
   - GrowingTextView (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  GrowingTextView: c4c7477a4ab5b31b313219e4b2c61c20ba33321d
+  GrowingTextView: 4089c8ce92dd3fa5550d192acf95d131c1baf906
 
 PODFILE CHECKSUM: f34f0f1fc34ca2e2faf6887857a2bda50ed3e60d
 
-COCOAPODS: 1.0.1
+COCOAPODS: 1.3.1

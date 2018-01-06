@@ -43,6 +43,10 @@ open class GrowingTextView: UITextView {
         didSet { setNeedsDisplay() }
     }
     
+    
+    /// Parent Scrollview to scroll to while editing
+    @IBOutlet open weak var parentScrollView: UIScrollView?
+    
     // Initialize
     override public init(frame: CGRect, textContainer: NSTextContainer?) {
         super.init(frame: frame, textContainer: textContainer)
@@ -91,7 +95,6 @@ open class GrowingTextView: UITextView {
         layoutIfNeeded()
     }
     
-    private var shouldScrollAfterHeightChanged = false
     override open func layoutSubviews() {
         super.layoutSubviews()
         
@@ -116,22 +119,17 @@ open class GrowingTextView: UITextView {
         
         // Update height constraint if needed
         if height != heightConstraint!.constant {
-            shouldScrollAfterHeightChanged = true
             heightConstraint!.constant = height
             if let delegate = delegate as? GrowingTextViewDelegate {
                 delegate.textViewDidChangeHeight?(self, height: height)
+                scrollToCorrectPosition()
             }
-        } else if shouldScrollAfterHeightChanged {
-            shouldScrollAfterHeightChanged = false
-            scrollToCorrectPosition()
         }
     }
     
     private func scrollToCorrectPosition() {
-        if self.isFirstResponder {
-            self.scrollRangeToVisible(NSMakeRange(-1, 0)) // Scroll to bottom
-        } else {
-            self.scrollRangeToVisible(NSMakeRange(0, 0)) // Scroll to top
+        if let scrollView = parentScrollView {
+            scrollToCorrectPosition(inScrollView: scrollView)
         }
     }
     
@@ -189,6 +187,18 @@ open class GrowingTextView: UITextView {
             }
             setNeedsDisplay()
         }
+    }
+    
+    open func scrollToCorrectPosition(inScrollView scrollView: UIScrollView) {
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 0.2, execute: {
+            UIView.setAnimationsEnabled(false)
+            let caret = scrollView.convert(self.caretRect(for: self.selectedTextRange!.start), from: self)
+            let keyboardTopBorder = self.bounds.size.height - scrollView.frame.width
+            if caret.origin.y > keyboardTopBorder && self.isFirstResponder {
+                scrollView.scrollRectToVisible(caret, animated: true)
+            }
+            UIView.setAnimationsEnabled(true)
+        })
     }
 }
 
