@@ -1,7 +1,7 @@
 # Acknowledgements
 This application makes use of the following third party libraries:
 
-## GrowingTextView
+## ASGrowingTextView
 
 Copyright (c) 2016 Kenneth Tsang <kenneth.tsang@me.com>
 

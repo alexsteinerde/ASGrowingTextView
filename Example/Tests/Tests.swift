@@ -1,6 +1,6 @@
 import UIKit
 import XCTest
-import GrowingTextView
+import ASGrowingTextView
 
 class Tests: XCTestCase {
     

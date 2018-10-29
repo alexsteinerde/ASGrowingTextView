@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import GrowingTextView
+import ASGrowingTextView
 
 class Example3: UIViewController {
     
