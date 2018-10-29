@@ -51,7 +51,7 @@
 		9F7776591F2CD24600D984BD /* Example3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example3.swift; sourceTree = "<group>"; };
 		9FE995411FE64DB00040D091 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		B0107F8A265D1912F5F00A58 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
-		E1CD2345DF65C90D2105BD90 /* ASGrowingTextView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ASGrowingTextView.podspec; path = ../ASGrowingTextView.podspec; sourceTree = "<group>"; };
+		E1CD2345DF65C90D2105BD90 /* ASGrowingTextView.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = ASGrowingTextView.podspec; path = ../ASGrowingTextView.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		E8F6685A1E7A2374008DC918 /* Example2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Example2.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
